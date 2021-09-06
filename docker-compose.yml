@@ -1,0 +1,16 @@
+version: '2.1'
+services:
+  expressjs-crud:
+    image: davlac/expressjs-crud
+    ports:
+      - 3000:3000
+
+  mongo-user:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+

@@ -1,11 +1,6 @@
 version: '2.1'
 services:
-  expressjs-crud:
-    image: davlac/expressjs-crud
-    ports:
-      - 3000:3000
-
-  mongo-user:
+  mongodb-user:
     image: mongo
     restart: always
     ports:
@@ -14,3 +9,9 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
 
+  expressjs-crud:
+    image: davlac/expressjs-crud
+    ports:
+      - 3000:3000
+    environment:
+      - MONGO_URI= mongodb://root:password@mongodb-user:27017
